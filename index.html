@@ -24,7 +24,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-  <title>Particle-Laden Fluid on Flow Maps</title>
+  <title>Clebsch Gauge Fluid on Particle Flow Maps</title>
   <link rel="icon" type="image/x-icon" href="static/images/gatech.png">
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
   rel="stylesheet">
@@ -52,23 +52,25 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">Particle-Laden Fluid on Flow Maps</h1>
+            <h1 class="title is-1 publication-title">Clebsch Gauge Fluid on Particle Flow Maps</h1>
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block">
                 <a href="FIRST AUTHOR PERSONAL LINK" target="_blank">Zhiqi Li<sup>1</sup></sup></a><!-- <sup>*</sup> -->,</span>
                 <span class="author-block">
-                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Duowen Chen<sup>1</sup></a><!-- <sup>*</sup> -->,</span>
+                  <a href="SECOND AUTHOR PERSONAL LINK" target="_blank">Candong Lin<sup>1</sup></a><!-- <sup>*</sup> -->,</span>
                   <span class="author-block">
-                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Candong Lin<sup>1</sup></a>,</span>
+                    <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Duowen Chen<sup>1</sup></a>,</span>
                     <span class="author-block">
-                      <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Jinyuan Liu<sup>2</sup></a>,</span>
+                      <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Xinyi Zhou<sup>1</sup></a>,</span>
+                      <span class="author-block">
+                        <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Shiying Xiong<sup>2</sup></a>,</span>
                       <span class="author-block">
                         <a href="THIRD AUTHOR PERSONAL LINK" target="_blank">Bo Zhu<sup>1</sup></a>,</span>
                       </div>
 
                   <div class="is-size-5 publication-authors">
-                    <span class="author-block"><sup>1</sup>Georgia Institute of Technology<br><sup>2</sup>Dartmouth College<br> ACM Transactions on Graphics (SIGGRAPH Asia 2024)</span>
+                    <span class="author-block"><sup>1</sup>Georgia Institute of Technology<br><sup>2</sup>Zhejiang University<br> ACM Transactions on Graphics (SIGGRAPH 2025)</span>
                     <!--<span class="eql-cntrb"><small><br><sup>*</sup>Indicates Equal Contribution</small></span> -->
                   </div>
 
@@ -105,11 +107,9 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <img src="static/images/teaser.jpg" alt="MY ALT TEXT"/>
+      <img src="static/images/teaser_1.jpg" alt="MY ALT TEXT"/>
         <h4 class="subtitle has-text-centered">
-          Examples of ink diffusion phenomena simulated by our method. Five simulation snapshots are shown from left to right: the interaction of two ink
-          drops forming ink rings and filaments; the formation of complex patterns as ink flows down a porous plate; the bulging, breakup, and torus formation of the
-          tail of a dripped ink drop; the interaction between ink and a hollow cat; and the ink diffusion stirred by a chopstick.
+          Our Clebsch wave function-based particle flow map can perfectly preserve vortices even at very low grid resolutions with precise convection. We demonstrate that our method is capable of simulating complex vortex interactions and motion under extremely low resolution (#resolution <= 64) (left), handling vortex shedding caused by moving obstacles leading to turbulent smoke (middle), and capturing the vortical structure shedded by the obstacle (right).
         </h4>
     </div>
   </div>
@@ -124,7 +124,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            We propose a novel framework for simulating ink as a particle-laden flow using particle flow maps. Our method addresses the limitations of existing flow-map techniques, which struggle with dissipative forces like viscosity and drag, thereby extending the application scope from solving the Euler equations to solving the Navier-Stokes equations with accurate viscosity and laden-particle treatment. Our key contribution lies in a coupling mechanism for two particle systems, coupling physical sediment particles and virtual flow-map particles on a background grid by solving a Poisson system. We implemented a novel path integral formula to incorporate viscosity and drag forces into the particle flow map process. Our approach enables state-of-the-art simulation of various particle-laden flow phenomena, exemplified by the bulging and breakup of suspension drop tails, torus formation, torus disintegration, and the coalescence of sedimenting drops. In particular, our method delivered high-fidelity ink diffusion simulations by accurately capturing vortex bulbs, viscous tails, fractal branching, and hierarchical structures.
+            We propose a novel gauge fluid solver that evolves Clebsch wave functions on particle flow maps (PFMs). The key insight underlying our work is that particle flow maps exhibit superior performance in transporting point elements—such as Clebsch components—compared to line and surface elements, which were the focus of previous methods relying on impulse and vortex gauge variables for flow maps. Our Clebsch PFM method incorporates three main contributions: a novel gauge transformation enabling accurate transport of wave functions on particle flow maps, an enhanced velocity reconstruction method for coarse grids, and a PFM-based simulation framework designed to better preserve fine-scale flow structures. We validate the Clebsch PFM method through a wide range of benchmark tests and simulation examples, ranging from leapfrogging vortex rings and vortex reconnections to Kelvin–Helmholtz instabilities, demonstrating that our method outperforms its impulse- or vortex-based counterparts on particle flow maps, particularly in preserving and evolving small-scale features.
           </p>
         </div>
       </div>
@@ -139,31 +139,55 @@
     <div id="results-carousel" class="carousel results-carousel">
       <div class="item item-video1">
         <video poster="" id="video1" autoplay controls muted loop height="100%">
-          <source src="static/videos/one_sphere.mp4"
+          <source src="static/videos/board.mp4"
           type="video/mp4">
         </video>
       </div>
       <div class="item item-video2">
         <video poster="" id="video2" autoplay controls muted loop height="100%">
-          <source src="static/videos/porus.mp4"
+          <source src="static/videos/bunny.mp4"
           type="video/mp4">
         </video>
       </div>
       <div class="item item-video3">
         <video poster="" id="video3" autoplay controls muted loop height="100%">
-          <source src="static/videos/inject.mp4"
+          <source src="static/videos/eight.mp4"
           type="video/mp4">
         </video>
       </div>
       <div class="item item-video4">
         <video poster="" id="video4" autoplay controls muted loop height="100%">
-          <source src="static/videos/cat.mp4"
+          <source src="static/videos/four_link.mp4"
           type="video/mp4">
         </video>
       </div>
       <div class="item item-video5">
         <video poster="" id="video5" autoplay controls muted loop height="100%">
-          <source src="static/videos/armadillo.mp4"
+          <source src="static/videos/four2.mp4"
+          type="video/mp4">
+        </video>
+      </div>
+      <div class="item item-video5">
+        <video poster="" id="video5" autoplay controls muted loop height="100%">
+          <source src="static/videos/KT.mp4"
+          type="video/mp4">
+        </video>
+      </div>
+      <div class="item item-video5">
+        <video poster="" id="video5" autoplay controls muted loop height="100%">
+          <source src="static/videos/leapfrog.mp4"
+          type="video/mp4">
+        </video>
+      </div>
+      <div class="item item-video5">
+        <video poster="" id="video5" autoplay controls muted loop height="100%">
+          <source src="static/videos/three_link.mp4"
+          type="video/mp4">
+        </video>
+      </div>
+      <div class="item item-video5">
+        <video poster="" id="video5" autoplay controls muted loop height="100%">
+          <source src="static/videos/two_link.mp4"
           type="video/mp4">
         </video>
       </div>
@@ -215,7 +239,7 @@
         <div class="column is-four-fifths">
           <div class="publication-video">
             <!-- Youtube embed code here -->
-            <iframe src="https://www.youtube.com/embed/JzozR1t-sIE" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/U0iTO8tfRK0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
           </div>
         </div>
       </div>
@@ -232,7 +256,7 @@
 <section class="section">
   <div class="container is-max-desktop content">
       <h2 class="title">Paper</h2>
-      <iframe  src="static/pdfs/SASIA_2024__Particle_Laden_Flow.pdf" width="100%" height="550">
+      <iframe  src="static/pdfs/SIG_2025__Clebsch_PFM_Upload.pdf" width="100%" height="550">
           </iframe>
   </div>
   </section>
